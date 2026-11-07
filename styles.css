@@ -534,6 +534,47 @@ input::placeholder, textarea::placeholder { color: #84958a; }
   @keyframes aparecer { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 }
 
+/* ---------- Hover de botones y elementos que se pueden presionar ---------- */
+.btn, .icon-btn, .wa-float, .casos__tabs button, .seg span, .compare__opt, .stepper button, .qsteps button, .footer a, .footer__admin, .qlink,
+.nav__menu a, .nav__logo img, .choice__box, .input input, .qselect, .field textarea, .consent, .geo__msg a, .lead-ok a {
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease, opacity .18s ease;
+}
+@media (hover: hover) {
+  /* Botones */
+  .btn:hover { filter: none; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(10, 58, 31, .14); }
+  .btn--sun:hover { background: #ffdc5c; color: var(--ink); }
+  .btn--dark:hover { background: var(--green-600); color: var(--white); }
+  .btn--ghost:hover { background: var(--green-100); border-color: var(--green-100); color: var(--green-800); }
+  .btn--line:hover { background: var(--green-100); border-color: var(--green-600) !important; color: var(--green-800); }
+  .icon-btn:hover { background: var(--green-100); border-color: var(--green-600); color: var(--green-800); }
+  .icon-btn--dark:hover { background: var(--green-600); border-color: var(--green-600); color: var(--white); }
+  .wa-float:hover { background: #ffdc5c; transform: scale(1.06); }
+
+  /* Menú y logo */
+  .nav__logo:hover img { opacity: .8; }
+  .nav__menu a:not(.btn):hover { color: var(--green-600); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+
+  /* Pestañas, opciones y tarjetas para elegir */
+  .casos__tabs button[aria-selected="false"]:hover { background: var(--green-100); color: var(--green-800); }
+  .seg label:hover input:not(:checked):not(:disabled) + span { background: var(--green-100); color: var(--green-800); }
+  .choice:hover input:not(:checked):not(:disabled) + .choice__box { background: #f4faef; border-color: #7fb98f; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(10, 58, 31, .08); }
+  .choice:hover input:checked + .choice__box { border-color: var(--green-600); }
+  .choice:hover .choice__box .ico { color: var(--green-600); }
+  .compare__opt[aria-checked="false"]:not(:disabled):hover { background: #f4faef; border-color: #9fcca9; }
+  .compare__opt[aria-checked="true"]:hover { border-color: var(--green-600); }
+  .stepper button:not(:disabled):hover { background: var(--green-100); color: var(--green-600); }
+  .qsteps button[data-done]:hover { color: var(--green-600); border-color: #9fcca9; }
+
+  /* Campos del formulario */
+  .input input:hover, .qselect:hover, .field textarea:hover { border-color: #7fb98f; }
+  .input input:focus, .qselect:focus, .field textarea:focus { border-color: var(--green-800); }
+  .consent:hover { color: var(--ink); }
+
+  /* Enlaces */
+  .footer a:hover, .footer__admin:hover { color: var(--sun); }
+  .qlink:hover, .geo__msg a:hover, .lead-ok a:hover { color: var(--green-600); }
+}
+
 /* ---------- Garantías ---------- */
 .warranty { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .warranty li { display: flex; flex-direction: column; gap: 10px; padding: 28px; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); }
@@ -553,3 +594,32 @@ input::placeholder, textarea::placeholder { color: #84958a; }
   .warranty { grid-template-columns: 1fr; }
   .warranty li { padding: 22px; }
 }
+
+/* ---------- Botones: estilo rectangular ---------- */
+.btn { min-height: 46px; padding: 0 22px; border-radius: 8px; font-size: 16px; font-weight: 600; gap: 8px; }
+.btn--ghost { border: 1.5px solid #9fcca9; }
+.btn--line { background: var(--white); color: var(--green-800); border: 1.5px solid var(--green-800) !important; }
+.btn .ico { width: 18px; height: 18px; }
+.nav__cta { min-height: 42px; padding: 0 18px; font-size: 15px; }
+
+/* Flechas en los botones que avanzan o regresan */
+.btn[href="#cotizador"]:not([data-wa])::after, #siguiente::after { content: "\2192"; font-size: 18px; line-height: 1; }
+#atras::before { content: "\2190"; font-size: 18px; line-height: 1; }
+@media (hover: hover) {
+  .btn[href="#cotizador"]:not([data-wa])::after, #siguiente::after { transition: transform .18s ease; }
+  .btn[href="#cotizador"]:not([data-wa]):hover::after, #siguiente:hover::after { transform: translateX(3px); }
+  #atras:hover::before { transform: translateX(-3px); }
+  #atras::before { transition: transform .18s ease; display: inline-block; }
+}
+
+/* Grupos segmentados: pestañas, opciones y cantidad */
+.seg, .casos__tabs { padding: 0; gap: 0; border: 1.5px solid var(--sage); border-radius: 8px; overflow: hidden; background: var(--white); }
+.seg label + label, .casos__tabs button + button { border-left: 1.5px solid var(--sage); }
+.seg span, .casos__tabs button { border-radius: 0; padding: 11px 18px; }
+.seg.seg--sm span { padding: 9px 14px; }
+.stepper { border-radius: 8px; overflow: hidden; }
+.stepper button { border-radius: 0; width: 38px; height: 38px; }
+.stepper output { align-self: stretch; display: flex; align-items: center; justify-content: center; border-left: 1.5px solid var(--sage); border-right: 1.5px solid var(--sage); }
+
+/* Campos con la misma esquina que los botones */
+.input input, .qselect, .field .qselect--lg, .field textarea, .admin input { border-radius: 8px; }
