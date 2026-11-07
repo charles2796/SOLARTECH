@@ -1,6 +1,6 @@
 // ============================================================
 // Solartech — cotizador en línea
-// Los precios y la configuración están en js/config.js
+// Los precios y la configuración están en config.js
 // ============================================================
 (function () {
   var CONFIG = window.SOLARTECH || {};
@@ -381,7 +381,7 @@
     return new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long' });
   }
 
-  // Guarda los datos en Google Sheets si hay una dirección configurada en js/config.js
+  // Guarda los datos en Google Sheets si hay una dirección configurada en config.js
   function guardar(datos) {
     var url = CONFIG.guardarEn;
     if (!url || !window.fetch) return false;

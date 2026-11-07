@@ -52,7 +52,7 @@
   });
 })();
 
-// Solartech — enlaces de WhatsApp y garantías desde js/config.js
+// Solartech — enlaces de WhatsApp y garantías desde config.js
 (function () {
   var config = window.SOLARTECH || {};
   var numero = (config.whatsapp || '').replace(/\D/g, '');
